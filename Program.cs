@@ -53,6 +53,10 @@ foreach(var imageFile in imageFiles)
     var randomFileNameAddOn = rnd.Next(0, 1000);
 
     var destFileName = fileDateTime.ToString("yyyyMMdd_HH-mm") + randomFileNameAddOn.ToString() + ext;
+    if (!(successGettingDate ?? false))
+    {
+        destFileName = "NOEXIF-" + destFileName;
+    }
     var fullDestPath = Path.Combine(outDirectory, destFileName);
 
     var inputFilePath = Path.Combine(inDirectory, imageFile);
